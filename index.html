@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!-- ·ÀÌù¹ã¸æ -->
+  <meta http-equiv='Cache-Control' content='no-siteapp' />
+	<meta name='renderer' , content='webkit' />
+  <meta name='apple-mobile-web-app-capable' , content='yes' />
+  <meta name='apple-mobile-web-app-status-bar-style' content='black' />
+  <meta name='apple-touch-fullscreen' , content='yes' />
+  <title>icp</title>
+</head>
+<body>
+  <div id="app">
+	<div>
+		<button onclick="sendDate()">sendData</button>
+		<button onclick="sendNullDate()">sendNull</button>
+	</div>
+	<div id="log" style="height:200px;width:100%;overflow:hidden;overflow-y:auto;">
+		
+	</div>
+  </div>
+  <script>
+	function sendDate() {
+		logs('click sendData')
+		let _data = window.webkit.messageHandlers.login.postMessage('12')
+		logs('back' + _data)
+	}
+	function sendNullDate() {
+		logs('click sendNull')
+		let _data = window.webkit.messageHandlers.login.postMessage()
+		logs('back' + _data)
+	}
+	function logs (data) {
+		let newdata = "<div><p>--------</p>"+data+'</div>'
+		let str = document.getElementById('log').innerHTML
+		document.getElementById('log').innerHTML = str + newdata
+	}
+  </script>
+</body>
+</html>
